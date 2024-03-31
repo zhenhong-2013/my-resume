@@ -1,95 +1,112 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+import React from 'react';
+import { Divider, Col, Row, List, ConfigProvider } from 'antd';
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+const basicData = [
+  '姓   名：石XX',
+  '性   别：男',
+  '出生日期：2013-01-29',
+  '学   校：上海浦东明珠 A 校',
+];
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+const certData = [
+  '国象：XXX',
+  '桥牌：XXX',
+  '奥数：XXX',
+  '空手道：XXX',
+];
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+const familyData = [
+  '父亲 工程师 13*********',
+  '母亲 财务   13*********',
+];
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+const hobbyData = [
+  '排箫',
+  '游戏',
+];
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
-}
+const App: React.FC = () => (
+
+  <ConfigProvider
+  theme={{
+    token: {
+      /* 这里是你的全局 token */
+      colorBorder: "#F9F900",
+      colorSplit: "rgba(255, 165, 0, 0.2)",
+    },
+  }}>
+
+  <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}>
+
+    <Col offset={4} span={16} className="gutter-row">
+
+      <Divider orientation="left" plain>
+        <h3>基本信息</h3>
+      </Divider>
+      <List    
+        bordered
+        dataSource={basicData}
+        renderItem={(item) => (
+          <List.Item>
+              {item}
+          </List.Item>
+        )}
+      />    
+ 
+
+
+    </Col>
+
+    <Col offset={4} span={16} className="gutter-row">
+    <Divider orientation="left" plain>
+    <h3>获奖证书</h3>
+    </Divider>
+    <List    
+      bordered
+      dataSource={certData}
+      renderItem={(item) => (
+        <List.Item>
+             {item}
+        </List.Item>
+      )}
+    />
+    </Col>
+
+    <Col offset={4} span={16} className="gutter-row">
+    <Divider orientation="left" plain>
+    <h3>家庭成员</h3>
+    </Divider>
+    <List    
+      bordered
+      dataSource={familyData}
+      renderItem={(item) => (
+        <List.Item>
+             {item}
+        </List.Item>
+      )}
+    />
+    </Col>
+
+    <Col offset={4} span={16} className="gutter-row">
+    <Divider orientation="left" plain>
+    <h3>兴趣爱好</h3>
+    </Divider>
+    <List    
+      bordered
+      dataSource={hobbyData}
+      renderItem={(item) => (
+        <List.Item>
+             {item}
+        </List.Item>
+      )}
+    />
+    </Col>
+
+  </Row>
+  </ConfigProvider> 
+);
+
+
+export default App;
